@@ -1,0 +1,93 @@
+   1              		.file	"main.c"
+   2              		.option pic
+   3              		.text
+   4              	.Ltext0:
+   5              		.cfi_sections	.debug_frame
+   6              		.align	2
+   7              		.globl	square
+   9              	square:
+  10              	.LFB6:
+  11              		.file 1 "../main.c"
+   1:../main.c     **** #include <stdio.h>
+   2:../main.c     **** #include <stdlib.h>
+   3:../main.c     **** 
+   4:../main.c     **** int square(int val)
+   5:../main.c     **** {
+  12              		.loc 1 5 1
+  13              		.cfi_startproc
+  14 0000 130101FD 		addi	sp,sp,-48
+  15              		.cfi_def_cfa_offset 48
+  16 0004 23348102 		sd	s0,40(sp)
+  17              		.cfi_offset 8, -8
+  18 0008 13040103 		addi	s0,sp,48
+  19              		.cfi_def_cfa 8, 0
+  20 000c 93070500 		mv	a5,a0
+  21 0010 232EF4FC 		sw	a5,-36(s0)
+   6:../main.c     ****   int result;
+   7:../main.c     ****   result = val * val;
+  22              		.loc 1 7 10
+  23 0014 8327C4FD 		lw	a5,-36(s0)
+  24 0018 BB87F702 		mulw	a5,a5,a5
+  25 001c 2326F4FE 		sw	a5,-20(s0)
+   8:../main.c     ****   return result;
+  26              		.loc 1 8 10
+  27 0020 8327C4FE 		lw	a5,-20(s0)
+   9:../main.c     **** }
+  28              		.loc 1 9 1
+  29 0024 13850700 		mv	a0,a5
+  30 0028 03348102 		ld	s0,40(sp)
+  31              		.cfi_restore 8
+  32              		.cfi_def_cfa 2, 48
+  33 002c 13010103 		addi	sp,sp,48
+  34              		.cfi_def_cfa_offset 0
+  35 0030 67800000 		jr	ra
+  36              		.cfi_endproc
+  37              	.LFE6:
+  39              		.align	2
+  40              		.globl	main
+  42              	main:
+  43              	.LFB7:
+  10:../main.c     **** 
+  11:../main.c     **** int main(void)
+  12:../main.c     **** {
+  44              		.loc 1 12 1
+  45              		.cfi_startproc
+  46 0034 130101FE 		addi	sp,sp,-32
+  47              		.cfi_def_cfa_offset 32
+  48 0038 233C1100 		sd	ra,24(sp)
+  49 003c 23388100 		sd	s0,16(sp)
+  50              		.cfi_offset 1, -8
+  51              		.cfi_offset 8, -16
+  52 0040 13040102 		addi	s0,sp,32
+  53              		.cfi_def_cfa 8, 0
+  13:../main.c     ****   int x = 10;
+  54              		.loc 1 13 7
+  55 0044 9307A000 		li	a5,10
+  56 0048 2326F4FE 		sw	a5,-20(s0)
+  14:../main.c     ****   return square(x);
+  57              		.loc 1 14 10
+  58 004c 8327C4FE 		lw	a5,-20(s0)
+  59 0050 13850700 		mv	a0,a5
+  60 0054 97000000 		call	square
+  60      E7800000 
+  61 005c 93070500 		mv	a5,a0
+  15:../main.c     **** }...
+  62              		.loc 1 15 1
+  63 0060 13850700 		mv	a0,a5
+  64 0064 83308101 		ld	ra,24(sp)
+  65              		.cfi_restore 1
+  66 0068 03340101 		ld	s0,16(sp)
+  67              		.cfi_restore 8
+  68              		.cfi_def_cfa 2, 32
+  69 006c 13010102 		addi	sp,sp,32
+  70              		.cfi_def_cfa_offset 0
+  71 0070 67800000 		jr	ra
+  72              		.cfi_endproc
+  73              	.LFE7:
+  75              	.Letext0:
+  76              		.file 2 "/usr/lib/gcc-cross/riscv64-linux-gnu/9/include/stddef.h"
+  77              		.file 3 "/usr/riscv64-linux-gnu/include/bits/types.h"
+  78              		.file 4 "/usr/riscv64-linux-gnu/include/bits/types/struct_FILE.h"
+  79              		.file 5 "/usr/riscv64-linux-gnu/include/bits/types/FILE.h"
+  80              		.file 6 "/usr/riscv64-linux-gnu/include/stdio.h"
+  81              		.file 7 "/usr/riscv64-linux-gnu/include/bits/sys_errlist.h"

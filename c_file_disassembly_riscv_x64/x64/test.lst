@@ -1,0 +1,93 @@
+   1              		.file	"main.c"
+   2              		.intel_syntax noprefix
+   3              		.text
+   4              	.Ltext0:
+   5              		.globl	square
+   7              	square:
+   8              	.LFB6:
+   9              		.file 1 "../main.c"
+   1:../main.c     **** #include <stdio.h>
+   2:../main.c     **** #include <stdlib.h>
+   3:../main.c     **** 
+   4:../main.c     **** int square(int val)
+   5:../main.c     **** {
+  10              		.loc 1 5 1
+  11              		.cfi_startproc
+  12 0000 F30F1EFA 		endbr64
+  13 0004 55       		push	rbp
+  14              		.cfi_def_cfa_offset 16
+  15              		.cfi_offset 6, -16
+  16 0005 4889E5   		mov	rbp, rsp
+  17              		.cfi_def_cfa_register 6
+  18 0008 897DEC   		mov	DWORD PTR -20[rbp], edi
+   6:../main.c     ****   int result;
+   7:../main.c     ****   result = val * val;
+  19              		.loc 1 7 10
+  20 000b 8B45EC   		mov	eax, DWORD PTR -20[rbp]
+  21 000e 0FAFC0   		imul	eax, eax
+  22 0011 8945FC   		mov	DWORD PTR -4[rbp], eax
+   8:../main.c     ****   return result;
+  23              		.loc 1 8 10
+  24 0014 8B45FC   		mov	eax, DWORD PTR -4[rbp]
+   9:../main.c     **** }
+  25              		.loc 1 9 1
+  26 0017 5D       		pop	rbp
+  27              		.cfi_def_cfa 7, 8
+  28 0018 C3       		ret
+  29              		.cfi_endproc
+  30              	.LFE6:
+  32              		.globl	main
+  34              	main:
+  35              	.LFB7:
+  10:../main.c     **** 
+  11:../main.c     **** int main(void)
+  12:../main.c     **** {
+  36              		.loc 1 12 1
+  37              		.cfi_startproc
+  38 0019 F30F1EFA 		endbr64
+  39 001d 55       		push	rbp
+  40              		.cfi_def_cfa_offset 16
+  41              		.cfi_offset 6, -16
+  42 001e 4889E5   		mov	rbp, rsp
+  43              		.cfi_def_cfa_register 6
+  44 0021 4883EC10 		sub	rsp, 16
+  13:../main.c     ****   int x = 10;
+  45              		.loc 1 13 7
+  46 0025 C745FC0A 		mov	DWORD PTR -4[rbp], 10
+  46      000000
+  14:../main.c     ****   return square(x);
+  47              		.loc 1 14 10
+  48 002c 8B45FC   		mov	eax, DWORD PTR -4[rbp]
+  49 002f 89C7     		mov	edi, eax
+  50 0031 E8000000 		call	square
+  50      00
+  15:../main.c     **** }...
+  51              		.loc 1 15 1
+  52 0036 C9       		leave
+  53              		.cfi_def_cfa 7, 8
+  54 0037 C3       		ret
+  55              		.cfi_endproc
+  56              	.LFE7:
+  58              	.Letext0:
+  59              		.file 2 "/usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h"
+  60              		.file 3 "/usr/include/x86_64-linux-gnu/bits/types.h"
+  61              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h"
+  62              		.file 5 "/usr/include/x86_64-linux-gnu/bits/types/FILE.h"
+  63              		.file 6 "/usr/include/stdio.h"
+  64              		.file 7 "/usr/include/x86_64-linux-gnu/bits/sys_errlist.h"
+ 923              		.section	.note.gnu.property,"a"
+ 924              		.align 8
+ 925 0000 04000000 		.long	 1f - 0f
+ 926 0004 10000000 		.long	 4f - 1f
+ 927 0008 05000000 		.long	 5
+ 928              	0:
+ 929 000c 474E5500 		.string	 "GNU"
+ 930              	1:
+ 931              		.align 8
+ 932 0010 020000C0 		.long	 0xc0000002
+ 933 0014 04000000 		.long	 3f - 2f
+ 934              	2:
+ 935 0018 03000000 		.long	 0x3
+ 936              	3:
+ 937 001c 00000000 		.align 8
+ 938              	4:

@@ -1,0 +1,42 @@
+0001   0000 DB C0       Anfang:  IN A, (00C0H)
+0002   0002 E6 80                AND 80H
+0003   0004 CA 00 00             JP Z, Anfang
+0004   0007 11 00 00             LD DE, 0000H
+0005   000A 21 00 19             LD HL, 1900H
+0006   000D 3A 00 19             LD A, (1900H)
+0007   0010 47                   LD B, A
+0008   0011 13          loop1:   INC DE
+0009   0012 CD 1C 00             CALL Leucht
+0010   0015 05                   DEC B
+0011   0016 C2 11 00             JP NZ, loop1
+0012   0019 C3 00 00             JP Anfang
+0013   001C             
+0014   001C 19          Leucht:  ADD HL, DE
+0015   001D 7E                   LD A, (HL)
+0016   001E 23                   INC HL
+0017   001F 4E                   LD C, (HL)
+0018   0020 D3 C0                OUT (00C0H), A
+0019   0022 78                   LD A, B
+0020   0023 32 FF 18             LD (18FFH), A
+0021   0026 CD 32 00    loop2:   CALL Wait
+0022   0029 0D                   DEC C
+0023   002A C2 26 00             JP NZ, loop2
+0024   002D 3A FF 18             LD A, (18FFH)
+0025   0030 47                   LD B, A
+0026   0031 C9                   RET
+0027   0032             
+0028   0032 79          Wait:    LD A, C
+0029   0033 32 FE 18             LD (18FEH), A
+0030   0036 06 05                LD B, 05H
+0031   0038 3E 21       loopB:   LD A, 21H
+0032   003A 0E 00       loopA:   LD C, 00H
+0033   003C 0D          loopC:   DEC C
+0034   003D C2 3C 00             JP NZ, loopC
+0035   0040 3D                   DEC A
+0036   0041 C2 3A 00             JP NZ, loopA
+0037   0044 05                   DEC B
+0038   0045 C2 38 00             JP NZ, loopB
+0039   0048 3A FE 18             LD A, (18FEH)
+0040   004B 4F                   LD C, A
+0041   004C C9                   RET
+Number of errors = 0

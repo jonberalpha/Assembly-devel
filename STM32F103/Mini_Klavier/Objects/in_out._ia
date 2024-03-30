@@ -1,0 +1,7 @@
+--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork 
+-I.\RTE\_Target_1
+-I"C:\Keil_v5\ARM\PACK\HTL Hollabrunn\STD-Pack\2.0.0\Header"
+-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+-IC:\Keil_v5\ARM\CMSIS\Include
+--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"
+--list .\listings\in_out.lst --xref -o .\objects\in_out.o --depend .\objects\in_out.d "IN_OUT.s"

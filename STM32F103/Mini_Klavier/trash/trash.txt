@@ -1,0 +1,66 @@
+;Inhalt des IDR zwischenspeichern
+                MOV		R0,R3
+				MOV		R5,#0x01
+				
+				SUB		R0, R0, #0x00
+				CBZ		R0, b_0
+				MOV		R0,R3
+				;C
+				SUB		R0, R0, #0x080
+				CBZ		R0, b_523
+				MOV		R0,R3
+				;D
+				SUB		R0, R0, #0x040
+				CBZ		R0, b_587
+				MOV		R0,R3
+				;E
+				SUB		R0, R0, #0x020
+				CBZ		R0, b_660
+				MOV		R0,R3
+				;F
+				SUB		R0, R0, #0x010
+				CBZ		R0, b_698
+				MOV		R0,R3
+				;G
+				SUB		R0, R0, #0x08
+				CBZ		R0, b_784
+				MOV		R0,R3
+				;A
+				SUB		R0, R0, #0x04
+				CBZ		R0, b_880
+				MOV		R0,R3
+				;H
+				SUB		R0, R0, #0x02
+				CBZ		R0, b_998
+				MOV		R0,R3
+				;C
+				SUB		R0, R0, #0x01
+				CBZ		R0, b_1046
+				MOV		R0,R3
+				
+b_0				LDR		R5,=0x00
+				B		exit
+				
+b_523			LDR		R4,=0x1F4
+				B		exit
+				
+b_587			LDR		R4,=0x01
+				B		exit
+				
+b_660			LDR		R4,=0x00
+				B		exit
+				
+b_698			LDR		R4,=0x02
+				B		exit
+				
+b_784			LDR		R4,=0x01
+				B		exit
+				
+b_880			LDR		R4,=0x00
+				B		exit
+				
+b_998			LDR		R4,=0x02
+				B		exit
+				
+b_1046			LDR		R4,=0x01
+				B		exit
